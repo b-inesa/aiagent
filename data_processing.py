@@ -3,7 +3,7 @@ from langchain_google_vertexai import VertexAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 
-DOCUMENTS_FOLDER = "documents\\"
+DOCUMENTS_FOLDER = "documents"
 EMBEDDING_MODEL = "text-multilingual-embedding-002"
 
 class Data:
