@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 import logging, os, json, vertexai
 from data_processing import Data
 from llm_connection import LLM
@@ -29,10 +29,10 @@ class Agent:
             self.users[user_id] = LLM().create_chain()
         return self.users[user_id]
 
-    async def start(self, update: Update):
+    async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Привіт! Я допоможу тобі знайти відповіді на питання щодо вступу до КПІ на ФІОТ. \n? напиши своє питання:")
     
-    async def handle_question(self, update: Update):
+    async def handle_question(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_id = update.message.chat.id
         question = update.message.text
         chain = self.get_user_chain(user_id)
