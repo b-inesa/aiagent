@@ -1,10 +1,14 @@
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
-import logging, os
+import logging, os, json, vertexai
 from data_processing import Data
 from llm_connection import LLM
 from fastapi import FastAPI, Request
 from contextlib import asynccontextmanager
+from google.oauth2 import service_account
+
+credentials = service_account.Credentials.from_service_account_info(json.loads(os.environ["CREDENTIALS_JSON"]))
+vertexai.init(project=os.getenv("PROJECT_ID"), location="us-central1", credentials=credentials)
 
 BOT_KEY = os.getenv("BOT_KEY")
 WEBHOOK_HOST = os.getenv("WEBHOOK_HOST")
