@@ -3,6 +3,6 @@ uvicorn[standard]==0.29.0
 python-telegram-bot[fast]==20.7
 langchain==0.1.20
 langchain-google-vertexai==0.0.6
-langchain-community==0.0.36
+langchain-community==0.0.39
 faiss-cpu==1.7.4
 PyPDF2==3.0.1
