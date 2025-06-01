@@ -3,7 +3,9 @@ from langchain.memory import ConversationSummaryBufferMemory
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import os
+from vertexai import init
 
+init(project="llm_project", location="us-central1")
 LLM_MODEL = "gemini-2.0-flash-001"
 
 class LLM:
