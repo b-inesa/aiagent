@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import logging, os, json, vertexai
 from data_processing import Data
 from llm_connection import LLM
@@ -15,7 +15,7 @@ WEBHOOK_HOST = os.getenv("WEBHOOK_HOST")
 WEBHOOK_PATH = f"/webhook/{BOT_KEY}"
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
-bot = ApplicationBuilder().token(BOT_KEY).build()
+bot = Application.builder().token(BOT_KEY).build()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
